@@ -1,0 +1,83 @@
+.toasts {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: flex-start;
+    position: fixed;
+    gap: 0.5em;
+    z-index: 1010;
+    right: 1vw;
+    top: 1vh;
+    width: min(100%, 300px);
+
+    &-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        padding: 0.5em;
+        position: relative;
+        background-color: #eeeeee;
+        color: #333333;
+        border-radius: 5px;
+        letter-spacing: 0.05em;
+        align-items: flex-start;
+        justify-content: center;
+
+        &.is-error {
+            border-left: 10px solid lighten($color: red, $amount: 25);
+        }
+
+        &.is-info {
+            border-left: 10px solid lighten($color: blue, $amount: 30);
+        }
+
+        &.is-success {
+            border-left: 10px solid lighten($color: green, $amount: 50);
+        }
+
+        &.is-action {
+            border-left: 10px solid lighten($color: yellow, $amount: 25);
+            animation-name: example;
+            animation-duration: 4s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+        &-title {
+            font-weight: 700;
+            font-size: min(3vw, 20px);
+        }
+
+        &-description {
+            font-weight: 500;
+            font-size: small;
+        }
+
+        &-close {
+            position: absolute;
+            top: 0.5vh;
+            right: 0.5vw;
+            cursor: pointer;
+        }
+
+        &-retry {
+            align-self: flex-end;
+            border-radius: 5px;
+            border: 1px solid #333333;
+            padding: 0.2rem;
+            cursor: pointer;
+        }
+    }
+}
+
+@keyframes example {
+    0% {
+        border-left: 10px solid lighten($color: red, $amount: 25);
+    }
+    50% {
+        border-left: 10px solid lighten($color: yellow, $amount: 25);
+    }
+    100% {
+        border-left: 10px solid lighten($color: red, $amount: 25);
+    }
+}

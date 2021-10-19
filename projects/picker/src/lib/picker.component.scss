@@ -1,0 +1,106 @@
+.picker {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content 1fr;
+    gap: 0.2rem;
+    width: 100%;
+    position: relative;
+
+    &.embedded{
+        position: relative;
+
+        .picker-controls{
+            padding: unset;
+            background-color: unset;
+        }
+
+        .picker-results{
+            position: absolute;
+            top: 20px;
+            box-shadow: 4px 4px 1px #333333;
+        }
+    }
+
+    &-list{
+        display: flex;
+        flex-wrap: wrap;
+        gap: .3rem;
+        align-items: center;
+        padding: .5rem;
+
+        &-item{
+            padding: .5rem 1rem;
+            border-radius: 5px;
+            display: flex;
+            gap: .5rem;
+            justify-content: space-around;
+            align-items: center;
+            border: 1px solid #333333;
+
+            &:hover{
+                .picker-list-item-remove{
+                    display: flex;
+                }
+            }
+
+            &-remove{
+                font-size: small;
+                cursor: pointer;
+                display: none;
+            }
+        }
+    }
+
+    &-controls {
+        display: grid;
+        grid-template-columns: 1fr max-content max-content;
+        gap: 1rem;
+        align-items: center;
+        padding: .5rem;
+        background-color: white;
+        border: 1px solid #333333;
+        
+        &-toggle{
+            font-weight: bolder;
+            cursor: pointer;
+        }
+
+        &-button{
+            cursor: pointer;
+        }
+    }
+
+    &-search {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        width: 100%;
+    }
+
+    &-results {
+        display: flex;
+        flex-direction: column;
+        max-height: 300px;
+        height: max-content;
+        width: 100%;
+        overflow: auto;
+        background-color: white;
+        position: absolute;
+        top: 100%;
+        z-index: 2;
+        
+        &-item {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            cursor: pointer;
+            padding: 1rem;
+
+            &:hover {
+                background-color: #333333;
+                color: white;
+                border-radius: 5px;
+            }
+        }
+    }
+}

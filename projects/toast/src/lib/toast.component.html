@@ -1,0 +1,17 @@
+<div *ngIf="toasts" class="toasts">
+    <span *ngFor="let toast of toasts let i=index" class="toasts-item" [ngClass]="
+        {
+            'is-error': toast.type === 'error',
+            'is-info': toast.type === 'info',
+            'is-success': toast.type === 'success',
+            'is-action': toast.type === 'action'
+        }
+    ">
+        <span class="toasts-item-title">{{toast.title}}</span>
+        <span *ngIf="toast.description" class="toasts-item-description">{{toast.description}}</span>
+        <fa-icon class="toasts-item-close" [icon]="faTimes" (click)="remove(toast.id)" title="Close">
+        </fa-icon>
+
+        <span class="toasts-item-retry" *ngIf="toast.retry && toast.type == 'error'" (click)="toast.retry()">Retry</span>
+    </span>
+</div>

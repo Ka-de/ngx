@@ -1,0 +1,81 @@
+<div class="color-picker">
+    <span class="color-picker-window">
+        <span class="color-picker-window-main">
+            <canvas class="color-picker-window-main-canvas" width="250" height="200"></canvas>
+            <span class="color-picker-window-main-indicator" [class.light]="light"></span>
+        </span>
+
+        <span class="color-picker-window-select">
+            <canvas class="color-picker-window-select-canvas" width="200" height="15"></canvas>
+            <span class="color-picker-window-select-indicator" [class.light]="light"></span>
+        </span>
+
+        <span class="color-picker-window-opacity">
+            <canvas class="color-picker-window-opacity-canvas" width="200" height="15"></canvas>
+            <span class="color-picker-window-opacity-indicator" [class.light]="light"></span>
+        </span>
+    </span>
+
+    <span class="color-picker-format">
+
+        <span *ngIf="type == 'hex'" class="color-picker-format-hex">
+            <input class="color-picker-format-hex-data" [value]="value" (change)="setHex($event)">
+            <span class="color-picker-format-hex-title">HEX</span>
+        </span>
+
+        <span class="color-picker-format-rgb" *ngIf="type == 'rgb'">
+            <span class="color-picker-format-rgb-section">
+                <input type="number" class="color-picker-format-rgb-section-data" [value]="pickedColor.r"
+                    (change)="setRGBA('r', $event)">
+                <span class="color-picker-format-rgb-section-title">R</span>
+            </span>
+
+            <span class="color-picker-format-rgb-section">
+                <input type="number" class="color-picker-format-rgb-section-data" [value]="pickedColor.g"
+                    (change)="setRGBA('g', $event)">
+                <span class="color-picker-format-rgb-section-title">G</span>
+            </span>
+
+            <span class="color-picker-format-rgb-section">
+                <input type="number" class="color-picker-format-rgb-section-data" [value]="pickedColor.b"
+                    (change)="setRGBA('b', $event)">
+                <span class="color-picker-format-rgb-section-title">B</span>
+            </span>
+
+            <span class="color-picker-format-rgb-section">
+                <input type="number" class="color-picker-format-rgb-section-data" [value]="pickedColor.a"
+                    (change)="setRGBA('a', $event)">
+                <span class="color-picker-format-rgb-section-title">A</span>
+            </span>
+        </span>
+
+        <span class="color-picker-format-toggle">
+            <fa-icon class="color-picker-format-toggle-item" [icon]="faAngleUp" (click)="switchType(-1)" title="Previous"></fa-icon>
+            <fa-icon class="color-picker-format-toggle-item" [icon]="faAngleDown" (click)="switchType(1)" title="Nest"></fa-icon>
+        </span>
+    </span>
+
+    <span class="color-picker-views">
+        <input #colorValue type="text" [value]="value" disabled class="color-picker-views-color"
+            [style.backgroundColor]="value">
+        <span class="color-picker-views-transparent" (click)=" value = 'transparent' ;colorChange.emit(value)" title="Transparent"></span>
+        <fa-icon class="color-picker-views-copy" [icon]="faCopy" (click)="copyColor(colorValue)" title="Copy"></fa-icon>
+    </span>
+
+    <span class="color-picker-default" *ngIf="defaultColors">
+        <span class="color-picker-default-title" (click)="showDefaults = !showDefaults">Default Colors</span>
+        <span class="color-picker-default-list" *ngIf="showDefaults">
+            <span class="color-picker-default-list-item" *ngFor="let color of defaultColors" [title]="color"
+                [style.backgroundColor]="color" (click)="selectColor(color)"></span>
+        </span>
+    </span>
+
+    <span class="color-picker-system" *ngIf="systemColors">
+        <span class="color-picker-system-title" (click)="showSystems = !showSystems">System Colors</span>
+        <span class="color-picker-system-list" *ngIf="showSystems">
+            <span class="color-picker-system-list-item" *ngFor="let color of systemColors" [title]="color"
+                [style.backgroundColor]="color" (click)="selectColor(color)"></span>
+        </span>
+    </span>
+
+</div>

@@ -1,0 +1,29 @@
+<div class="picker">
+    <span class="picker-header">
+
+        <span class="picker-list" *ngIf="multi">
+            <span class="picker-list-item" *ngFor="let item of items">
+                {{getItemValue(item)}}
+                <fa-icon class="picker-list-item-remove" [icon]="faTimes" (click)="removeItem(item)" title="Cancel">
+                </fa-icon>
+            </span>
+        </span>
+
+        <span class="picker-controls">
+            <input (click)="showItems = true" #input type="text" class="picker-search" (keyup)="changed(input.value)"
+                (change)="changed(input.value)" ([value])="text || ''" placeholder="Search to pick">
+
+            <fa-icon [icon]="showItems ? faAngleUp : faAngleDown" (click)="showItems = !showItems" title="Toggle List">
+            </fa-icon>
+
+            <span class="picker-controls-button" *ngIf="multi" (click)="output.emit(items)">Use</span>
+        </span>
+
+    </span>
+
+    <span class="picker-results" *ngIf="showItems">
+        <span class="picker-results-item" *ngFor="let p of result" (click)="pick(p.key)">
+            {{p.value}}
+        </span>
+    </span>
+</div>

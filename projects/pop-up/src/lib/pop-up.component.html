@@ -1,0 +1,13 @@
+<div class="pop-up" [class.pop-up-full]="full">
+    <div class="pop-up-header">
+        <span class="pop-up-header-title">{{heading ?? "Pop-Up"}}</span>
+        <span class="pop-up-header-menu">
+            <fa-icon class="pop-up-header-menu-button" [icon]="full ? faWindowMinimize : faWindowMaximize" (click)="toggleFull()" title="Toggle">
+            </fa-icon>
+            <fa-icon class="pop-up-header-menu-button" [icon]="faTimes" (click)="close()" title="Close">
+            </fa-icon>
+        </span>
+    </div>
+    <ng-container class="pop-up-body" #body>
+    </ng-container>
+</div>

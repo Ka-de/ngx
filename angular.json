@@ -3,5 +3,161 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "color-picker": {
+      "projectType": "library",
+      "root": "projects/color-picker",
+      "sourceRoot": "projects/color-picker/src",
+      "prefix": "bin",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/color-picker/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/color-picker/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/color-picker/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/color-picker/src/test.ts",
+            "tsConfig": "projects/color-picker/tsconfig.spec.json",
+            "karmaConfig": "projects/color-picker/karma.conf.js"
+          }
+        }
+      }
+    },
+    "pop-up": {
+      "projectType": "library",
+      "root": "projects/pop-up",
+      "sourceRoot": "projects/pop-up/src",
+      "prefix": "bin",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pop-up/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pop-up/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pop-up/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/pop-up/src/test.ts",
+            "tsConfig": "projects/pop-up/tsconfig.spec.json",
+            "karmaConfig": "projects/pop-up/karma.conf.js"
+          }
+        }
+      }
+    },
+    "toast": {
+      "projectType": "library",
+      "root": "projects/toast",
+      "sourceRoot": "projects/toast/src",
+      "prefix": "bin",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/toast/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/toast/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/toast/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/toast/src/test.ts",
+            "tsConfig": "projects/toast/tsconfig.spec.json",
+            "karmaConfig": "projects/toast/karma.conf.js"
+          }
+        }
+      }
+    },
+    "picker": {
+      "projectType": "library",
+      "root": "projects/picker",
+      "sourceRoot": "projects/picker/src",
+      "prefix": "bin",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/picker/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/picker/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/picker/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/picker/src/test.ts",
+            "tsConfig": "projects/picker/tsconfig.spec.json",
+            "karmaConfig": "projects/picker/karma.conf.js"
+          }
+        }
+      }
+    },
+    "object-selector": {
+      "projectType": "library",
+      "root": "projects/object-selector",
+      "sourceRoot": "projects/object-selector/src",
+      "prefix": "bin",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/object-selector/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/object-selector/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/object-selector/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/object-selector/src/test.ts",
+            "tsConfig": "projects/object-selector/tsconfig.spec.json",
+            "karmaConfig": "projects/object-selector/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "color-picker"
 }

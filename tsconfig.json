@@ -3,6 +3,28 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "color-picker": [
+        "dist/color-picker/color-picker",
+        "dist/color-picker"
+      ],
+      "object-selector": [
+        "dist/object-selector/object-selector",
+        "dist/object-selector"
+      ],
+      "picker": [
+        "dist/picker/picker",
+        "dist/picker"
+      ],
+      "pop-up": [
+        "dist/pop-up/pop-up",
+        "dist/pop-up"
+      ],
+      "toast": [
+        "dist/toast/toast",
+        "dist/toast"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -26,5 +48,6 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "exclude": ["dist"]
 }
