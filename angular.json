@@ -34,6 +34,37 @@
         }
       }
     },
+    "text-editor": {
+      "projectType": "library",
+      "root": "projects/text-editor",
+      "sourceRoot": "projects/text-editor/src",
+      "prefix": "bin",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/text-editor/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/text-editor/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/text-editor/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/text-editor/src/test.ts",
+            "tsConfig": "projects/text-editor/tsconfig.spec.json",
+            "karmaConfig": "projects/text-editor/karma.conf.js"
+          }
+        }
+      }
+    },
     "pop-up": {
       "projectType": "library",
       "root": "projects/pop-up",

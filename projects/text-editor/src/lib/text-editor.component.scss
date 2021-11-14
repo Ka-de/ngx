@@ -1,0 +1,56 @@
+.text-editor{
+    height:calc(100%);
+    width:calc(100%);
+    display:grid;
+    grid-template-columns:1fr;
+    grid-template-rows:-webkit-max-content 1fr;
+    grid-template-rows:max-content 1fr;
+    overflow:hidden;
+
+    &-toolbar{
+        display:flex;
+        flex-wrap:wrap;
+        grid-gap:.2rem;
+        gap:.2rem;
+        align-items:center;
+        border-bottom:1px solid black;
+
+        &-icon{
+            cursor:pointer;
+            padding:.5rem;
+
+            &:hover{
+                background-color:#0000001a;
+            }
+        }
+
+        &-button{
+            cursor:pointer;
+            padding:.5rem;
+            font-weight:1000;
+            background-color:transparent;
+            border:none;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            font-size:small;
+        }
+    }
+
+    &-canvas{
+        height:100%;
+        width:100%;
+        border:none;
+        outline:none
+}
+}
+
+.vr{
+    height:50%;
+    border-left:1px solid black
+}
+
+input[type=number i]{
+    width:50px
+}
+

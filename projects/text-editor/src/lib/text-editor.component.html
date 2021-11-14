@@ -1,0 +1,109 @@
+<div class="text-editor">
+    <div class="text-editor-toolbar">
+        <button title="Undo" class="text-editor-toolbar-button" (click)="undo()">
+            <fa-icon [icon]="faUndo"> </fa-icon>
+        </button>
+
+        <button title="Redo" class="text-editor-toolbar-button" (click)="redo()">
+            <fa-icon [icon]="faRedo"> </fa-icon>
+        </button>
+
+        <span class="vr"></span>
+        <button style="font-weight: 1000;" title="Bold" class="text-editor-toolbar-button" (click)="bold()">
+            B
+        </button>
+
+        <button style="font-style: italic;" title="Italic" class="text-editor-toolbar-button" (click)="italic()">
+            I
+        </button>
+
+        <button style="text-decoration: underline;" title="Underline" class="text-editor-toolbar-button"
+            (click)="underline()">
+            U
+        </button>
+
+        <button style="text-decoration: line-through;" title="Strike Through" class="text-editor-toolbar-button"
+            (click)="strikeThrough()">
+            S
+        </button>
+
+        <button class="text-editor-toolbar-button" title="Subscript" (click)="subScript()">
+            <fa-icon [icon]="faSubscript"> </fa-icon>
+        </button>
+
+        <button class="text-editor-toolbar-button" title="Superscript" (click)="superScript()">
+            <fa-icon [icon]="faSuperscript"> </fa-icon>
+        </button>
+
+        <span class="vr"></span>
+        <button class="text-editor-toolbar-button" title="Ordered List" (click)="orderedList()">
+            <fa-icon [icon]="faListOl"> </fa-icon>
+        </button>
+
+        <button class="text-editor-toolbar-button" title="Unordered List" (click)="unOrderedList()">
+            <fa-icon [icon]="faListUL"> </fa-icon>
+        </button>
+
+        <span class="vr"></span>
+        <select #FontName class="text-editor-toolbar-data" title="Font name" (change)="fontName(FontName.value)">
+            <option>Arial</option>
+            <option>Arial Black</option>
+            <option>Roboto</option>
+        </select>
+    
+        <select #FontSize class="text-editor-toolbar-data" title="Font name" (change)="fontSize(FontSize.value)">
+            <option value="1">Heading 1</option>
+            <option value="2">Heading 2</option>
+            <option value="3">Heading 3</option>
+            <option value="4">Heading 4</option>
+            <option value="5">Heading 5</option>
+            <option value="6">Heading 6</option>
+        </select>
+
+        <span class="vr"></span>
+
+        <button class="text-editor-toolbar-button" title="Font Color" (click)="toggleColorPicker($event)">
+            <fa-icon [icon]="faFont"> </fa-icon>
+            <span #Color style="width: 20px; height: 5px; background-color: black;"></span>
+            <bin-color-picker *ngIf="showColorPicker" (close)="showColorPicker = false"
+                (colorChange)="Color.style.backgroundColor = $event; foreColor($event)" id="color-picker"></bin-color-picker>
+        </button>
+
+        <button class="text-editor-toolbar-button" title="Hightlight Color" (click)="toggleHilitePicker($event)">
+            <fa-icon [icon]="faHighlighter"> </fa-icon>
+            <span #Hilite style="width: 20px; height: 5px; background-color: black;"></span>
+            <bin-color-picker *ngIf="showHilitePicker" (close)="showHilitePicker = false"
+                (colorChange)="Hilite.style.backgroundColor = $event; hilitecolor($event)" id="color-picker"></bin-color-picker>
+        </button>
+
+        <span class="vr"></span>
+
+        <button class="text-editor-toolbar-button" title="Unordered List" (click)="justifyLeft()">
+            <fa-icon [icon]="faAlignLeft"> </fa-icon>
+        </button>
+
+        <button class="text-editor-toolbar-button" title="Unordered List" (click)="justifyCenter()">
+            <fa-icon [icon]="faAlignCenter"> </fa-icon>
+        </button>
+
+        <button class="text-editor-toolbar-button" title="Unordered List" (click)="justifyFull()">
+            <fa-icon [icon]="faAlignJustify"> </fa-icon>
+        </button>
+
+        <button class="text-editor-toolbar-button" title="Unordered List" (click)="justifyRight()">
+            <fa-icon [icon]="faAlignRight"> </fa-icon>
+        </button>
+
+        <span class="vr"></span>
+
+        <button class="text-editor-toolbar-button" title="Create Link" (click)="link()">
+            <fa-icon [icon]="faLink"> </fa-icon>
+        </button>
+
+        <button class="text-editor-toolbar-button" title="Remove Link" (click)="unlink()">
+            <fa-icon [icon]="faUnlink"> </fa-icon>
+        </button>
+    </div>
+    
+    <iframe class="text-editor-canvas" id="canvas"></iframe>
+</div>
