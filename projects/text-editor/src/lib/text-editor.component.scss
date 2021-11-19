@@ -3,17 +3,24 @@
     width:calc(100%);
     display:grid;
     grid-template-columns:1fr;
-    grid-template-rows:-webkit-max-content 1fr;
     grid-template-rows:max-content 1fr;
     overflow:hidden;
+
+    &.readonly{
+        grid-template-rows: 1fr;
+
+        .text-editor-toolbar{
+            display: none;
+        }
+    }
 
     &-toolbar{
         display:flex;
         flex-wrap:wrap;
-        grid-gap:.2rem;
         gap:.2rem;
         align-items:center;
         border-bottom:1px solid black;
+        padding: 1rem;
 
         &-icon{
             cursor:pointer;
@@ -46,7 +53,7 @@
 }
 
 .vr{
-    height:50%;
+    height:15px;
     border-left:1px solid black
 }
 

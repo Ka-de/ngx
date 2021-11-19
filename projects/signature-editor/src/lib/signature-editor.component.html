@@ -1,0 +1,17 @@
+<div class="signature-editor">
+    <span class="signature-editor-tools">
+        <input class="signature-editor-tools-item" type="color" id="color" (change)="setStrokeStyle($event)">
+
+        <input class="signature-editor-tools-item" type="number" id="width" (change)="setLineWidth($event)">
+
+        <select class="signature-editor-tools-item" id="cap" (change)="setCap($event)">
+            <option selected disabled>Cap Signature</option>
+            <option>Round</option>
+            <option>Butt</option>
+            <option>Square</option>
+        </select>
+
+        <button class="signature-editor-tools-item" id="use" (click)="getImage()">Use</button>
+    </span>
+    <canvas class="signature-editor-canvas" id="canvas" width="500" height="300"></canvas>
+</div>

@@ -10,6 +10,7 @@ import {faAlignCenter, faAlignJustify, faAlignLeft, faAlignRight, faFont, faHigh
 export class TextEditorComponent implements OnInit {
 
   @Input() value = "";
+  @Input() readonly = false;
   @Output()  changed = new EventEmitter<{ text: string, html: string}>();
 
   faUndo = faUndo;
@@ -58,7 +59,9 @@ export class TextEditorComponent implements OnInit {
       this.document = this.frame.contentDocument as Document;
       this.body = this.document.body as HTMLBodyElement;
       this.body.innerHTML = this.value;
-      this.document.designMode = 'on';
+      
+      if(!this.readonly) this.document.designMode = 'on';
+
       this.checkChanges();
   }
 

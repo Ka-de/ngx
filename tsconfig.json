@@ -20,6 +20,10 @@
         "dist/pop-up/pop-up",
         "dist/pop-up"
       ],
+      "signature-editor": [
+        "dist/signature-editor/signature-editor",
+        "dist/signature-editor"
+      ],
       "toast": [
         "dist/toast/toast",
         "dist/toast"
