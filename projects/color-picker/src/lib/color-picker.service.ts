@@ -320,6 +320,9 @@ export class ColorPickerService {
     else if (type == 'hsl' || type == 'hsla') {
       color = this.hslToHex(color);
     }
+    else{
+      color = this.nameToHex(color);
+    }
 
     return color;
   }
@@ -383,6 +386,14 @@ export class ColorPickerService {
 
   elementToCanvas(element: HTMLElement) {
 
+  }
+
+  shadeColor(color: string, amount: number) {
+    color = this.toHEX(color);
+
+    const shade = '#' + color.replace(/^#/, '').replace(/../g, color => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
+
+    return shade;
   }
 }
 

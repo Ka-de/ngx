@@ -26,9 +26,7 @@ export class ToastComponent implements OnInit, OnDestroy {
         this.toasts = toasts.slice(0, 3);
 
         for (let toast of this.toasts) {
-          let time = setTimeout(() => {
-            console.log(toast);
-            
+          let time = setTimeout(() => {            
             if(!toast.sticky) this.remove(toast.id);
             clearTimeout(time);
           }, 5 * 1000);
@@ -47,5 +45,6 @@ export class ToastComponent implements OnInit, OnDestroy {
 
   retry(toast: Toast){
     if(toast.retry) toast.retry();
+    this.toastServices.remove(toast.id);
   }
 }

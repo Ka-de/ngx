@@ -1,11 +1,32 @@
 <div class="color-picker">
+
+    <span class="color-picker-tab">
+
+        <span class="color-picker-tab-item" [class.active]="selector == 'Swatches'"
+            (click)="setSelector('Swatches')">Swatches</span>
+
+        <span class="color-picker-tab-item" [class.active]="selector == 'Spectrum'"
+            (click)="setSelector('Spectrum')">Spectrum</span>
+
+    </span>
+
     <span class="color-picker-window">
-        <span class="color-picker-window-main">
+
+        <span class="color-picker-window-main" *ngIf="selector == 'Spectrum'">
             <canvas class="color-picker-window-main-canvas" width="250" height="200"></canvas>
             <span class="color-picker-window-main-indicator" [class.light]="light"></span>
         </span>
 
-        <span class="color-picker-window-select">
+        <span class="color-picker-window-swatches" *ngIf="selector == 'Swatches'" style="height: 215px; width: 250px;"
+            [style.gridTemplateColumns]="'repeat('+getSwatches().length+', 1fr)'">
+            <span class="color-picker-window-swatches-column" *ngFor="let stream of getSwatches()">
+                <span class="color-picker-window-swatches-item" [style.backgroundColor]="color"
+                    *ngFor="let color of getSwatchStops(stream)" [class.active]="swatchColor == color"
+                    (mouseenter)="selectSwatch(color)"></span>
+            </span>
+        </span>
+
+        <span class="color-picker-window-select" *ngIf="selector == 'Spectrum'">
             <canvas class="color-picker-window-select-canvas" width="200" height="15"></canvas>
             <span class="color-picker-window-select-indicator" [class.light]="light"></span>
         </span>
@@ -50,15 +71,18 @@
         </span>
 
         <span class="color-picker-format-toggle">
-            <fa-icon class="color-picker-format-toggle-item" [icon]="faAngleUp" (click)="switchType(-1)" title="Previous"></fa-icon>
-            <fa-icon class="color-picker-format-toggle-item" [icon]="faAngleDown" (click)="switchType(1)" title="Nest"></fa-icon>
+            <fa-icon class="color-picker-format-toggle-item" [icon]="faAngleUp" (click)="switchType(-1)"
+                title="Previous"></fa-icon>
+            <fa-icon class="color-picker-format-toggle-item" [icon]="faAngleDown" (click)="switchType(1)" title="Nest">
+            </fa-icon>
         </span>
     </span>
 
     <span class="color-picker-views">
         <input #colorValue type="text" [value]="value" disabled class="color-picker-views-color"
             [style.backgroundColor]="value">
-        <span class="color-picker-views-transparent" (click)=" value = 'transparent' ;colorChange.emit(value)" title="Transparent"></span>
+        <span class="color-picker-views-transparent" (click)=" value = 'transparent' ;colorChange.emit(value)"
+            title="Transparent"></span>
         <fa-icon class="color-picker-views-copy" [icon]="faCopy" (click)="copyColor(colorValue)" title="Copy"></fa-icon>
     </span>
 

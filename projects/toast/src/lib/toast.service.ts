@@ -11,7 +11,7 @@ export class ToastService {
 
   toasts = new Observable<Toast[]>((observer) => {
     this.observer = observer;
-    this.observer.next(this.items);
+    this.observer?.next(this.items);
 
     return {
       unsubscribe() { }
@@ -23,7 +23,7 @@ export class ToastService {
   add(item: Partial<Toast>) {
     const toast = new Toast(item);
     this.items.push(toast);
-    this.observer.next(this.items);
+    this.observer?.next(this.items);
 
     return toast;
   }
@@ -33,11 +33,11 @@ export class ToastService {
       if (item.id == id) return { ...item, ...update };
       return item;
     });
-    this.observer.next(this.items);
+    this.observer?.next(this.items);
   }
 
   remove(id: string) {
     this.items = this.items.filter((item) => item.id != id);
-    this.observer.next(this.items);
+    this.observer?.next(this.items);
   }
 }

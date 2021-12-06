@@ -52,6 +52,9 @@ export class ColorPickerComponent implements OnInit, AfterContentInit {
   faAngleUp = faAngleUp;
   faAngleDown = faAngleDown;
 
+  selector!: string;
+  swatchColor!: string;
+
   constructor(
     private el: ElementRef,
     private changeDetector: ChangeDetectorRef,
@@ -73,30 +76,12 @@ export class ColorPickerComponent implements OnInit, AfterContentInit {
     this.element = this.el.nativeElement;
     this.changeDetector.detectChanges();
 
-    this.selectCanvas = this.element.querySelector('.color-picker-window-select-canvas') as HTMLCanvasElement;
-    this.selectContext = this.selectCanvas.getContext('2d') as CanvasRenderingContext2D;
-    this.selectIndicator = this.element.querySelector('.color-picker-window-select-indicator') as HTMLElement;
-    this.calibrateSelect();
-    this.monitorSelect();
-
-    this.mainCanvas = this.element.querySelector('.color-picker-window-main-canvas') as HTMLCanvasElement;
-    this.mainContext = this.mainCanvas.getContext('2d') as CanvasRenderingContext2D;
-    this.mainIndicator = this.element.querySelector('.color-picker-window-main-indicator') as HTMLElement;
-    this.calibrateMain();
-    this.monitorMain();
-
-    this.opacityCanvas = this.element.querySelector('.color-picker-window-opacity-canvas') as HTMLCanvasElement;
-    this.opacityContext = this.opacityCanvas.getContext('2d') as CanvasRenderingContext2D;
-    this.opacityIndicator = this.element.querySelector('.color-picker-window-opacity-indicator') as HTMLElement;
-    this.calibrateOpacity();
-    this.monitorOpacity();
+    this.setSelector('Swatches');
 
     this.element.addEventListener('click', event => {
       const target = event.target as HTMLElement;
       if (target == this.element) this.removePicker();
     });
-
-    this.selectColor(this.value);
   }
 
   calibrateSelect() {
@@ -245,8 +230,12 @@ export class ColorPickerComponent implements OnInit, AfterContentInit {
     const [r, g, b, a] = this.colorPickerService.extractRGB(this.colorPickerService.nameToRGB(color)).split(',');
     this.pickedColor = { r: parseInt(r), g: parseInt(g), b: parseInt(b), a: parseFloat(a) }
 
-    this.calibrateMain();
+    if (this.selector == 'Spectrum') {
+      this.calibrateMain();
+    }
+
     this.calibrateOpacity();
+
     this.changed();
   }
 
@@ -304,4 +293,62 @@ export class ColorPickerComponent implements OnInit, AfterContentInit {
     }, 2000);
   }
 
+  setSelector(name: string) {
+    this.selector = name;
+
+    setTimeout(() => {
+      if (this.selector == "Spectrum") {
+        this.selectCanvas = this.element.querySelector('.color-picker-window-select-canvas') as HTMLCanvasElement;
+        this.selectContext = this.selectCanvas.getContext('2d') as CanvasRenderingContext2D;
+        this.selectIndicator = this.element.querySelector('.color-picker-window-select-indicator') as HTMLElement;
+        this.calibrateSelect();
+        this.monitorSelect();
+
+        this.mainCanvas = this.element.querySelector('.color-picker-window-main-canvas') as HTMLCanvasElement;
+        this.mainContext = this.mainCanvas.getContext('2d') as CanvasRenderingContext2D;
+        this.mainIndicator = this.element.querySelector('.color-picker-window-main-indicator') as HTMLElement;
+        this.calibrateMain();
+        this.monitorMain();
+      }
+      else if (this.selector == 'Swatches') {
+
+      }
+
+      this.opacityCanvas = this.element.querySelector('.color-picker-window-opacity-canvas') as HTMLCanvasElement;
+      this.opacityContext = this.opacityCanvas.getContext('2d') as CanvasRenderingContext2D;
+      this.opacityIndicator = this.element.querySelector('.color-picker-window-opacity-indicator') as HTMLElement;
+      this.calibrateOpacity();
+      this.monitorOpacity();
+
+      this.selectColor(this.value);
+    }, 5);
+  }
+
+  getSwatches() {
+    return [
+      '#000000',
+      '#b90b13',
+      '#9d0794',
+      '#690aae',
+      '#061893',
+      '#06a5a1',
+      '#07a00d',
+      '#ffd900',
+      '#9a0f08'
+    ];
+  }
+
+  getSwatchStops(color: string) {
+    const stops: string[] = [];
+
+    for (let i = 10; i >= 1; i--) {
+      stops.push(this.colorPickerService.shadeColor(color, i / 10 * 100))
+    }
+    return stops;
+  }
+
+  selectSwatch(color: string) {
+    this.swatchColor = color;
+    this.selectColor(color);
+  }
 }
