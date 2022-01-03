@@ -1,13 +1,20 @@
 <div class="pop-up" [class.pop-up-full]="full">
-    <div class="pop-up-header">
+    <div class="pop-up-header" *ngIf="heading">
         <span class="pop-up-header-title">{{heading ?? "Pop-Up"}}</span>
         <span class="pop-up-header-menu">
-            <fa-icon class="pop-up-header-menu-button" [icon]="full ? faWindowMinimize : faWindowMaximize" (click)="toggleFull()" title="Toggle">
+            <fa-icon class="pop-up-header-menu-button" [icon]="full ? faWindowMinimize : faWindowMaximize"
+                (click)="toggleFull()" title="Toggle">
             </fa-icon>
             <fa-icon class="pop-up-header-menu-button" [icon]="faTimes" (click)="close()" title="Close">
             </fa-icon>
         </span>
     </div>
-    <ng-container class="pop-up-body" #body>
+
+    <fa-icon *ngIf="!heading" class="pop-up-close" [icon]="faTimes" (click)="close()" title="Close">
+    </fa-icon>
+
+    <ng-container class="pop-up-body" #body *ngIf="component">
     </ng-container>
+
+    <ng-content *ngIf="!component" class="pop-up-body"></ng-content>
 </div>

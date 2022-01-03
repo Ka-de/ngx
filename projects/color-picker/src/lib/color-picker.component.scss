@@ -6,9 +6,10 @@
     align-items: center;
     justify-content: center;
     background-color: white;
-    border: 1px solid white;
+    border: 1px solid black;
     color: #333333;
     height: max-content;
+    padding: .5rem;
 
     &-tab{
         display: grid;

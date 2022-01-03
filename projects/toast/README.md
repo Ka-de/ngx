@@ -1,24 +1,47 @@
-# Toast
+# Toast #
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+## Introduction ##
+This is a library used to manage notifications in form of Toast/Snackbar in Angular. The progress of the actions that triggered the notification is also monitored by the library.
 
-## Code scaffolding
+## Tools ##
+This library depends alot on the following tools
+- RxJs
+- uuid
+- fontawesome
 
-Run `ng generate component component-name --project toast` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project toast`.
-> Note: Don't forget to add `--project toast` or else it will be added to the default project in your `angular.json` file. 
 
-## Build
+## Component Inputs ##
+<details>
+    <summary>nVisible</summary>
+    <span>This is the max number of visible notifications at a particular instance</span>
+</details>
+<details>
+    <summary>timeout</summary>
+    <span>This is the duration that a visible toast will stay on the screen if it is not sticky</span>
+</details>
 
-Run `ng build toast` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build toast`, go to the dist folder `cd dist/toast` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test toast` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Functions ##
+<details>
+    <summary>Add</summary>
+    <span>
+        This is used to add a now toast to the System
+    </span>
+</details>
+<details>
+    <summary>Update</summary>
+    <span>
+        This is used to update a particular toast in the system
+    </span>
+</details>
+<details>
+    <summary>Remove</summary>
+    <span>
+        This is used to remove a particular toast from the system
+    </span>
+</details>
+<details>
+    <summary>Toasts</summary>
+    <span>
+        This is the Observable triggered on any of the above actions. Gets the list of the toasts in the system
+    </span>
+</details>

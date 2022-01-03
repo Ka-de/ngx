@@ -31,8 +31,9 @@ export class PopUpComponent implements OnInit, OnDestroy, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.id, 'this.id');
+    
     if (!this.id) {
-      console.log('Modal must have an id')
       return;
     }
 

@@ -37,6 +37,13 @@
         }
     }
 
+    &-close{
+        justify-self: flex-end;
+        padding: .5rem;
+        font-size: 1.2;
+        cursor: pointer;
+    }
+
     &-body {
         height: 100%;
         width: 100%;

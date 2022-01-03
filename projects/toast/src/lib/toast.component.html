@@ -1,17 +1,33 @@
-<div *ngIf="toasts" class="toasts">
-    <span *ngFor="let toast of toasts let i=index" class="toasts-item" [ngClass]="
-        {
-            'is-error': toast.type === 'error',
-            'is-info': toast.type === 'info',
-            'is-success': toast.type === 'success',
-            'is-action': toast.type === 'action'
-        }
-    ">
-        <span class="toasts-item-title">{{toast.title}}</span>
-        <span *ngIf="toast.description" class="toasts-item-description">{{toast.description}}</span>
-        <fa-icon class="toasts-item-close" [icon]="faTimes" (click)="remove(toast.id)" title="Close">
-        </fa-icon>
+<div *ngIf="toasts" class="toasts" [ngClass]="
+{
+    'full': size === ToastSize.FULL,
+    'small': size === ToastSize.SMALL,
+    'topleft': position === ToastPosition.TOPLEFT,
+    'topright': position === ToastPosition.TOPRIGHT,
+    'bottomleft': position === ToastPosition.BOTTOMLEFT,
+    'bottomright': position === ToastPosition.BOTTOMRIGHT
+}
+">
+    <span *ngFor="let toast of toasts let i=index" class="toasts-item">
 
-        <span class="toasts-item-retry" *ngIf="toast.retry && toast.type == 'error'" (click)="toast.retry()">Retry</span>
+        <span class="toasts-item-header">
+            <fa-icon class="toasts-item-header-item" [icon]="faRedo" *ngIf="toast.retry && toast.type == 'error'"
+                (click)="retry(toast)" title="Retry" style="transform: scale(0.8);">
+            </fa-icon>
+
+            <fa-icon class="toasts-item-header-item" [icon]="faTimes" (click)="remove(toast.id)" title="Close">
+            </fa-icon>
+        </span>
+
+        <span class="toasts-item-barge">
+            <fa-icon class="toasts-item-barge-icon" [icon]="getBarge(toast.type)" [style.color]="getColor(toast.type)"
+                [class.loading]="toast.type == ToastTypes.ACTION"></fa-icon>
+        </span>
+
+        <span class="toasts-item-details">
+            <span class="toasts-item-title">{{toast.title}}</span>
+            <span *ngIf="toast.description" class="toasts-item-description">{{toast.description}}</span>
+        </span>
+
     </span>
 </div>

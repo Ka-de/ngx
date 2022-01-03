@@ -7,7 +7,7 @@
     "@fortawesome/angular-fontawesome": "^0.9.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@black-ink/color-picker": "^0.0.3"
+    "@black-ink/color-picker": "^0.0.4"
   },
   "dependencies": {
     "tslib": "^2.3.0"

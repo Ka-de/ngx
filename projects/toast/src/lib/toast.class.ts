@@ -1,21 +1,16 @@
 import { v4 as uuidV4 } from "uuid";
+import { IToast } from "./models/toast.interface";
+import { ToastTypes } from "./models/toast.types";
 
-export enum ToastTypes {
-    SUCCESS = "success",
-    ERROR = "error",
-    INFO = "info",
-    ACTION = "action"
-}
-
-export class Toast {
+export class Toast implements IToast {
     id!: string;
     title!: string;
-    description!: string;
     type!: ToastTypes;
+    description?: string;
     sticky?: boolean;
     retry?: () => any;
 
-    constructor(item: Partial<Toast>) {
+    constructor(item: IToast) {
         this.id = uuidV4();
         this.title = item.title as string;
         this.description = item.description as string;

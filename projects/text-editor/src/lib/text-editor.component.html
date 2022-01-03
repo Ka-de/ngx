@@ -1,4 +1,19 @@
 <div class="text-editor" [class.readonly]="readonly">
+
+    <div class="text-editor-menu">
+        <span class="text-editor-menu-control">
+            <button class="text-editor-menu-button">Insert</button>
+
+            <span class="text-editor-menu-options">
+                <span class="text-editor-menu-options-container">
+                    <span class="text-editor-menu-options-item" (click)="insertTable(table)">Table</span>
+                    <span class="text-editor-menu-options-item">Picture</span>
+                </span>
+            </span>
+        </span>
+        <span class="text-editor-menu-button">View</span>
+    </div>
+
     <div class="text-editor-toolbar">
         <button title="Undo" class="text-editor-toolbar-button" (click)="undo()">
             <fa-icon [icon]="faUndo"> </fa-icon>
@@ -50,7 +65,7 @@
             <option>Arial Black</option>
             <option>Roboto</option>
         </select>
-    
+
         <select #FontSize class="text-editor-toolbar-data" title="Font name" (change)="fontSize(FontSize.value)">
             <option value="1">Heading 1</option>
             <option value="2">Heading 2</option>
@@ -66,14 +81,16 @@
             <fa-icon [icon]="faFont"> </fa-icon>
             <span #Color style="width: 20px; height: 5px; background-color: black;"></span>
             <bin-color-picker *ngIf="showColorPicker" (close)="showColorPicker = false"
-                (colorChange)="Color.style.backgroundColor = $event; foreColor($event)" id="color-picker"></bin-color-picker>
+                (colorChange)="Color.style.backgroundColor = $event; foreColor($event)" id="color-picker">
+            </bin-color-picker>
         </button>
 
         <button class="text-editor-toolbar-button" title="Hightlight Color" (click)="toggleHilitePicker($event)">
             <fa-icon [icon]="faHighlighter"> </fa-icon>
             <span #Hilite style="width: 20px; height: 5px; background-color: black;"></span>
             <bin-color-picker *ngIf="showHilitePicker" (close)="showHilitePicker = false"
-                (colorChange)="Hilite.style.backgroundColor = $event; hilitecolor($event)" id="color-picker"></bin-color-picker>
+                (colorChange)="Hilite.style.backgroundColor = $event; hilitecolor($event)" id="color-picker">
+            </bin-color-picker>
         </button>
 
         <span class="vr"></span>
@@ -104,6 +121,26 @@
             <fa-icon [icon]="faUnlink"> </fa-icon>
         </button>
     </div>
-    
+
     <iframe class="text-editor-canvas" id="canvas"></iframe>
 </div>
+
+<table #table style="display: none" frame="box" rules="groups">
+    <colgroup span="1" align="left"></colgroup>
+    <colgroup span="3" align="left"></colgroup>
+
+    <thead>
+        <th style="width: 50px; height: 25px;"></th>
+        <th style="width: 50px; height: 25px;"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="width: 50px; height: 25px;"></td>
+            <td style="width: 50px; height: 25px;"></td>
+        </tr>
+        <tr>
+            <td style="width: 50px; height: 25px;"></td>
+            <td style="width: 50px; height: 25px;"></td>
+        </tr>
+    </tbody>
+</table>
