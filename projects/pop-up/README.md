@@ -1,24 +1,73 @@
-# PopUp
+# Toast #
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+## Introduction ##
+This is a library used to manage popups in form of modals in Angular. The views or position of the popups can be modified. Also it can embed a full angular component or simple html.
 
-## Code scaffolding
+## Tools ##
+This library depends alot on the following tools
+- fontawesome
 
-Run `ng generate component component-name --project pop-up` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project pop-up`.
-> Note: Don't forget to add `--project pop-up` or else it will be added to the default project in your `angular.json` file. 
 
-## Build
+## Component Inputs ##
+<details>
+    <summary>id</summary>
+    <span>This is the unique id of the pop-up</span>
+</details>
+<details>
+    <summary>component</summary>
+    <span>This is the to be embedded in the pop-up window</span>
+</details>
+<details>
+    <summary>heading</summary>
+    <span>This is the title of the pop-up</span>
+</details>
+<details>
+    <summary>data</summary>
+    <span>This is the data to be feed into the component</span>
+</details>
+<details>
+    <summary>full</summary>
+    <span>This is the flag to decide width of pop-up</span>
+</details>
+<details>
+    <summary>postion</summary>
+    <span>This is the position of the pop-up on the browser</span>
+</details>
 
-Run `ng build pop-up` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build pop-up`, go to the dist folder `cd dist/pop-up` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test pop-up` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Functions ##
+<details>
+    <summary>Add</summary>
+    <span>
+        This is used to add a now popup to the System
+    </span>
+</details>
+<details>
+    <summary>Remove</summary>
+    <span>
+        This is used to remove a particular popup from the system
+    </span>
+</details>
+<details>
+    <summary>Open</summary>
+    <span>
+        This is used to open a particular popup in the system
+    </span>
+</details>
+<details>
+    <summary>Close</summary>
+    <span>
+        This is used to close a particular popup in the system
+    </span>
+</details>
+<details>
+    <summary>Delete</summary>
+    <span>
+        This is used to delete a particular popup in the system
+    </span>
+</details>
+<details>
+    <summary>GetPopups</summary>
+    <span>
+        This is used to get all the instances of popup in the system.
+    </span>
+</details>

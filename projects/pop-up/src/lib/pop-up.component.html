@@ -1,4 +1,11 @@
-<div class="pop-up" [class.pop-up-full]="full">
+<div class="pop-up" [ngClass]="
+{
+    'left': position === PopUpPosition.LEFT,
+    'right': position === PopUpPosition.RIGHT,
+    'center': position === PopUpPosition.CENTER,
+    'full': full === true
+}
+">
     <div class="pop-up-header" *ngIf="heading">
         <span class="pop-up-header-title">{{heading ?? "Pop-Up"}}</span>
         <span class="pop-up-header-menu">

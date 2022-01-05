@@ -6,8 +6,7 @@ import { PopUpService } from './pop-up.service';
 
 describe('PopUpService', () => {
   let service: PopUpService;
-  let component: PopUpComponent;
-  let fixture: ComponentFixture<PopUpComponent>;
+  let component: any;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -15,25 +14,39 @@ describe('PopUpService', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PopUpComponent);
-    component = fixture.componentInstance;
-    component.id = "Hello world";
-    fixture.detectChanges();
+    component = {
+      id: "Hello world"
+    };
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should add if component is a PopUpComponent', () => {
-    service.add(component);    
-    expect(service.getModals().find(m => m.id.includes('Hello world'))).toBeTruthy();
+  it('should add a component to modal list', () => {
+    service.add(component);
+    const modals = service.getModals();
+    expect(modals.length).toBe(1);
   });
 
-  it('should not add if component does not have an id', () => {
-    delete (component as any).id;
+  it('should fail to add if component does not have an id', () => {
+    delete component.id;
     service.add(component);
-    expect(service.getModals().length).toBe(1);
+    expect(service.getModals().length).toBe(0);
+  });
+
+  it('should remove a component from modal list', () => {
+    service.add(component);
+    service.remove(component.id);
+    const modals = service.getModals();
+    expect(modals.length).toBe(0);
+  });
+
+  it('should fail to remove a component from modal list if id does not exist', () => {
+    service.add(component);
+    service.remove('component.id');
+    const modals = service.getModals();
+    expect(modals.length).toBe(1);
   });
 
 });
